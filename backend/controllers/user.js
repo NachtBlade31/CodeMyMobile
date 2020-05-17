@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const formidable = require('formidable');
 const fs = require('fs');
+
+
 exports.landing = (req, res) => {
     return res.send("All good");
 }
@@ -35,7 +37,7 @@ exports.addNewUser = (req, res) => {
         user.firstName = firstName
         user.lastName = lastName
 
-        //categories
+        //friends
         let arrayFriends = friends && friends.split(',')
         if (files.photo) {
             if (files.photo.size > 10000000) {
@@ -53,7 +55,15 @@ exports.addNewUser = (req, res) => {
                     error: err
                 })
             }
-            // res.json(result);
+            arrayFriends.map((arr) => (
+                User.findByIdAndUpdate(arr, { $push: { friends: result._id } }, { new: true }).exec((err, result) => {
+                    if (err) {
+                        return res.status(400).json({
+                            error: err
+                        })
+                    }
+                })
+            ))
             User.findByIdAndUpdate(result._id, { $push: { friends: arrayFriends } }, { new: true }).exec((err, result) => {
                 if (err) {
                     return res.status(400).json({
@@ -86,5 +96,59 @@ exports.list = (req, res) => {
             res.json(data)
         })
 
+
+}
+
+exports.listFriends = (req, res) => {
+    const firstName = req.params.firstName
+    User.findOne({ firstName })
+        // .select("-photo")
+        .populate('friends', '_id firstName lastName')
+        .select('_id friends')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: err
+                })
+            }
+            res.json(data)
+
+        })
+
+}
+
+exports.singleUser = (req, res) => {
+    const firstName = req.params.firstName
+    User.findOne({ firstName })
+        // .select("-photo")
+        .populate('friends', '_id firstName lastName')
+        .select('_id firstName lastName photo friends')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: err
+                })
+            }
+            res.json(data)
+
+        })
+
+}
+
+exports.listFriendsofFriend = (req, res) => {
+    let limit = req.body.limit ? parseInt(req.body.limit) : 5
+    const firstName = req.params.firstName
+    const { _id, friends } = req.body
+    User.find({ firstName: { $ne: firstName }, friends: { $in: friends } })
+        .limit(limit)
+        .select('_id firstName lastName')
+        .exec((err, users) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'Friends not found'
+                })
+            }
+            res.json(users)
+        })
 
 }
