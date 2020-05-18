@@ -42,7 +42,7 @@ The Application will be running on http://localhost:3000/
 * A progress bar is added to each page to show thw progess and let user know that something is happening.
 * When a User A adds User B as a friend, the same is also reflected in the profile of user B which will show User A as his friend.
 * Basic pagination is added. At one time only 5 users are shown on frontPage, we can get more profiles using Load More buton.
-* Any user have the ability to see friends of his friends who are not mutual to them.
+* Any user have the ability to see friends of his friends.
 
 
 
@@ -104,7 +104,7 @@ There are total 7 API endpoints to get data.
 @@Method: Post 
 @@Route:  http://localhost:5000/api/user/fof/:firstName
 @@Use:    Returns details of all the users who are not mutual friends with friend of a particular user.
-@@Params: Expects firstName as paramter to query the user and 3 variables, the id of the user and array of friends of the user. For example-http://localhost:5000/api/user/fof/Thor will fetch result for user with firstName Thor and return all non mutual friends  of friends of Thor.
+@@Params: Expects firstName as paramter to query the user and 3 variables, the id of the user and array of friends of the user. For example-http://localhost:5000/api/user/fof/Thor will fetch result for user with firstName Thor and return all friends of Thor.
 
 ```
 
