@@ -117,6 +117,6 @@ There are total 7 API endpoints to get data.
 
 ```
 
-
-
+## Postman Testing
+![Landing Page](Images/Landing Page.png)
 
