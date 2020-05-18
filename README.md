@@ -34,7 +34,7 @@ $ npm install
 $ npm run dev
 
 ```
-The Aplliction will be running on http://localhost:3000/
+The Application will be running on http://localhost:3000/
 
 ## Features 
 
