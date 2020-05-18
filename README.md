@@ -118,5 +118,28 @@ There are total 7 API endpoints to get data.
 ```
 
 ## Postman Testing
-![Landing Page](Images/Landing Page.png)
+
+* Fetch User Info
+![GetUserInfo](Images/GetUserInfo.png)
+
+
+* Add New User
+![AddNewUser](Images/AddNewUser.png)
+
+
+* Get Friend Of Friend
+![FriendOfFriend](Images/FriendOfFriend.png)
+
+
+* Add All User with basic Pagination
+![GetAllUserWithPagination](Images/GetAllUserWithPagination.png)
+
+
+* Add Profile Avatar
+![GetUserAvatar](Images/GetUserAvatar.png)
+
+
+* Add all friends of particular user
+![GetAllFriends](Images/GetAllFriends.png)
+
 
