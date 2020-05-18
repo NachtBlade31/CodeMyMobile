@@ -21,6 +21,7 @@ const SingleUser = ({ user, query }) => {
 
     useEffect(() => {
         loadRelated();
+        setRelated([])
     }, [])
 
     const showFriends = user =>

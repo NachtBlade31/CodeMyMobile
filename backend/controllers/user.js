@@ -138,6 +138,7 @@ exports.singleUser = (req, res) => {
 exports.listFriendsofFriend = (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 5
     const firstName = req.params.firstName
+    let originallist = req.body.friends
     const { _id, friends } = req.body
     User.find({ firstName: { $ne: firstName }, friends: { $in: friends } })
         .limit(limit)
@@ -148,6 +149,14 @@ exports.listFriendsofFriend = (req, res) => {
                     error: 'Friends not found'
                 })
             }
+            users.map((user, index) => (
+                originallist.map((fr, i) => {
+                    if (user.firstName === fr.firstName) {
+                        users.splice(index, 1)
+                        originallist.splice(i, 1)
+                    }
+                })
+            ))
             res.json(users)
         })
 
