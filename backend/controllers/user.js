@@ -28,11 +28,11 @@ exports.addNewUser = (req, res) => {
                 error: 'Last Name is required'
             })
         }
-        // if (!friends || !friends.length === 0) {
-        //     return res.status(400).json({
-        //         error: 'Please add atleast one friend'
-        //     })
-        // }
+        if (!friends || !friends.length === 0) {
+            return res.status(400).json({
+                error: 'Please add atleast one friend'
+            })
+        }
         let user = new User()
         user.firstName = firstName
         user.lastName = lastName
