@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { landing, addNewUser, list, listFriends, listFriendsofFriend, singleUser } = require('../controllers/user');
+const { landing, addNewUser, list, listFriends, listFriendsofFriend, singleUser, photo } = require('../controllers/user');
 
 //default Page
 router.get('/user', landing)
@@ -20,7 +20,9 @@ router.get('/user/friends/:firstName', listFriends)
 
 //Route to get list of friends of the friends
 router.post('/user/fof/:firstName', listFriendsofFriend)
-// router.get('/profile', requireLoggedin, authMiddleWare, read)
+
+//Route to get photo of user
+router.get('/user/photo/:firstName', photo)
 
 
 module.exports = router;

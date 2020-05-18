@@ -152,3 +152,20 @@ exports.listFriendsofFriend = (req, res) => {
         })
 
 }
+
+
+exports.photo = (req, res) => {
+    const firstName = req.params.firstName
+    User.findOne({ firstName })
+        .select('photo')
+        .exec((err, user) => {
+
+            if (err || !user) {
+                return res.status(400).json({
+                    error: err
+                })
+            }
+            res.set('Content-Type', user.photo.contentType)
+            return res.send(user.photo.data)
+        })
+}
