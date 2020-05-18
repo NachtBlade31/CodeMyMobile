@@ -4,7 +4,7 @@
   "description": "Round  2",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "author": "Kshitiz",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "formidable": "^1.2.2",
     "fs": "0.0.1-security",
     "mongoose": "^5.9.14",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.4"
   }
 }
