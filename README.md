@@ -120,26 +120,74 @@ There are total 7 API endpoints to get data.
 ## Postman Testing
 
 * Fetch User Info
+
 ![GetUserInfo](Images/GetUserInfo.png)
 
 
 * Add New User
+
 ![AddNewUser](Images/AddNewUser.png)
 
 
 * Get Friend Of Friend
+
 ![FriendOfFriend](Images/FriendOfFriend.png)
 
 
 * Add All User with basic Pagination
+
 ![GetAllUserWithPagination](Images/GetAllUserWithPagination.png)
 
 
 * Add Profile Avatar
+
 ![GetUserAvatar](Images/GetUserAvatar.png)
 
 
 * Add all friends of particular user
+
 ![GetAllFriends](Images/GetAllFriends.png)
 
 
+# Database Schema
+
+We are using MongoDb Atlas  as the database. The database is deployed on cloud and data can be added and retreived directly from cloud. There is no changes requird for any database and can be used from anywhere.
+The Schema includes 4 fields.
+
+```
+
+ firstName: {
+        type: String,
+        trim: true,
+        required: true,
+        max: 32
+    },
+    lastName: {
+        type: String,
+        trim: true,
+        required: true,
+        max: 32
+    },
+    photo: {
+        data: Buffer,
+        contentType: String
+    },
+    friends: [{ type: ObjectId, ref: 'User', required: true }]
+    
+```
+
+## Testing
+
+Code is yet to be tested . But the following are the proposed methods for testing.
+
+* For Backend - Use of Mongo-unit and Mocha is proposed for intergration and unit testing.
+  Following Links can be referred for the same.
+  
+  [Mocha Testing](https://blog.bitsrc.io/build-a-unit-testing-suite-with-mocha-and-mongoose-eba06c3b3625)
+  
+
+* For Frontend-Use of Frameworks like  Jest and Enzyme is proposed for unit testing NextJs frontend.
+  Following Links can be referred for the same.
+  [Jest and Enzyme Unit Testing](https://medium.com/@miiny/unit-test-next-js-with-jest-and-enzyme-5b305a8e29fe)
+
+  
