@@ -42,7 +42,7 @@ The Application will be running on http://localhost:3000/
 * A progress bar is added to each page to show thw progess and let user know that something is happening.
 * When a User A adds User B as a friend, the same is also reflected in the profile of user B which will show User A as his friend.
 * Basic pagination is added. At one time only 5 users are shown on frontPage, we can get more profiles using Load More buton.
-* Any user have the ability to see friends of his friends.
+* Any user have the ability to see friends of his friends which are not mutual to them.
 
 
 
