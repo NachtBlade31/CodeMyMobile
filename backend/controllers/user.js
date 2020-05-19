@@ -149,11 +149,10 @@ exports.listFriendsofFriend = (req, res) => {
                     error: 'Friends not found'
                 })
             }
-            users.map((user, index) => (
-                originallist.map((fr, i) => {
+            originallist.map((fr, i) => (
+                users.map((user, index) => {
                     if (user.firstName === fr.firstName) {
                         users.splice(index, 1)
-                        originallist.splice(i, 1)
                     }
                 })
             ))
