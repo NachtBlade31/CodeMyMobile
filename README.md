@@ -12,7 +12,7 @@ Know your Friend and  make new friends.
 * [Testing](#testing)
 
 ## General info
-This is a sample app for round 2 for CodeMyMobile interview.The goal was to create Rest APIs and a SPA to run those APIs.
+The goal was to create Rest APIs and a SPA to run those APIs.
 
 ## Technologies
 Project is created with:
